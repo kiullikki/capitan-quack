@@ -1,0 +1,60 @@
+@import "./colors";
+
+.input,
+.select {
+  position: relative;
+  display: flex;
+  justify-content: stretch;
+
+  &__label {
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: $third;
+
+    transition: 0.5s;
+
+    &--top {
+      top: -20px;
+      transition: 0.5s;
+    }
+  }
+
+  &__field {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 0.8rem;
+
+    border-radius: 0;
+    border: 1px solid $auxiliaryThird;
+    border-bottom-width: 2px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom-color: $accentPrimary;
+    }
+
+    &:focus,
+    &:active {
+      color: $primary;
+      border: 1px solid $auxiliaryThird;
+      border-bottom-width: 2px;
+      border-bottom-color: $primary;
+
+      & + .input__label {
+        top: -20px;
+        transition: 0.5s;
+      }
+    }
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -15px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: $accentPrimary;
+  }
+}

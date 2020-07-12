@@ -1,0 +1,50 @@
+@import "./colors";
+
+.table {
+  width: "100%";
+
+  &__header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: $accentPrimary;
+  }
+
+  &__row {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    flex-grow: 47;
+  }
+
+  &__year {
+    flex-grow: 7;
+  }
+
+  &__color {
+    flex-grow: 6;
+  }
+
+  &__status {
+    flex-grow: 13;
+  }
+
+  &__price {
+    flex-grow: 12;
+  }
+
+  &__price {
+    flex-grow: 12;
+  }
+
+  &__control {
+    flex-grow: 11;
+  }
+
+  &__title {
+    font-family: "Roboto-Medium";
+    color: $auxiliaryPrimary;
+  }
+}

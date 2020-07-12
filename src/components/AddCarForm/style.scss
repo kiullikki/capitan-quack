@@ -1,0 +1,22 @@
+.form {
+  &__row {
+    display: flex;
+    margin-bottom: 45px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__input {
+    flex-grow: 1;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__submit {
+    flex-grow: 1;
+  }
+}
