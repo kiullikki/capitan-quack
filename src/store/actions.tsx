@@ -1,11 +1,16 @@
+import { ICar } from "../interfaces";
+
 export enum ACTIONS_TYPES {
   INITIAL = "INITIAL",
+  ADD_CAR = "ADD_CAR",
 }
 
-export interface IInitialAction {
-  type: ACTIONS_TYPES.INITIAL;
+export interface IAddCarAction {
+  type: ACTIONS_TYPES.ADD_CAR;
+  payload: ICar;
 }
 
-export const initialAction = (): IInitialAction => ({
-  type: ACTIONS_TYPES.INITIAL,
+export const addCarAction = (payload: ICar): IAddCarAction => ({
+  type: ACTIONS_TYPES.ADD_CAR,
+  payload,
 });

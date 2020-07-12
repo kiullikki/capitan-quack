@@ -1,5 +1,5 @@
 import { ISelectOption } from "../CustomSelect";
-import { STATUS_CAR_TYPE } from "../../interfaces";
+import { STATUS_CAR_TYPE, CAR_COLOR } from "../../interfaces";
 
 export enum FIELD_TYPE {
   NAME = "name",
@@ -8,14 +8,6 @@ export enum FIELD_TYPE {
   STATUS = "status",
   PRICE = "price",
   DESCRIPTION = "description",
-}
-
-export enum CAR_COLOR {
-  WHITE = "white",
-  BLACK = "black",
-  GRAY = "gray",
-  RED = "red",
-  GREEN = "green",
 }
 
 export const DICTIONARY = {
@@ -39,6 +31,14 @@ export const INITIAL_VALUES = {
   [FIELD_TYPE.PRICE]: "",
   [FIELD_TYPE.DESCRIPTION]: "",
 };
+
+export const RADIO_COLORS = [
+  CAR_COLOR.WHITE,
+  CAR_COLOR.BLACK,
+  CAR_COLOR.GRAY,
+  CAR_COLOR.RED,
+  CAR_COLOR.GREEN,
+];
 
 export const STATUS_OPTIONS: ISelectOption[] = [
   {

@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .form {
   &__row {
     display: flex;
@@ -16,7 +18,39 @@
     }
   }
 
-  &__submit {
-    flex-grow: 1;
+  &__submit,
+  &__select,
+  &__color {
+    width: calc((100% - 40px) / 3);
+  }
+
+  &__radio-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__radio {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__color {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  &__label {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: $third;
   }
 }

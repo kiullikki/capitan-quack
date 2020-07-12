@@ -31,8 +31,11 @@ export const CustomInput = (props: IProps) => {
     [isInvalid]
   );
   const labelClasses = useMemo(
-    () => `input__label ${isInvalid && "input__label--error"}`,
-    [isInvalid]
+    () =>
+      `input__label ${isInvalid && "input__label--error"} ${
+        !!value && "input__label--top"
+      }`,
+    [isInvalid, value]
   );
 
   return (
