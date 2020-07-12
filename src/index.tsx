@@ -8,9 +8,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Provider store={appStore}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
