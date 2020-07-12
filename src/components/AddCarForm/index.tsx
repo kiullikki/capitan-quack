@@ -6,11 +6,13 @@ import "./style.scss";
 import { CustomInput } from "../CustomInput";
 import { CustomRadioInput } from "../CustomRadioInput";
 import { CustomSelect } from "../CustomSelect";
+import { CAR_COLOR, ICar } from "../../interfaces";
 import {
   INITIAL_VALUES,
   DICTIONARY,
   FIELD_TYPE,
   STATUS_OPTIONS,
+  RADIO_COLORS,
 } from "./constants";
 
 const { SHOULD_BE_FILLED, SHOULD_BE_SELECTED } = ERRORS;
@@ -25,12 +27,13 @@ const schema = Yup.object().shape({
 
 interface IProps {
   className?: string;
+  addCar?: (car: ICar) => void;
 }
 
 export const AddCarForm = (props: IProps) => {
-  const { className = "" } = props;
+  const { className = "", addCar = () => {} } = props;
 
-  const onSubmit = useCallback((vlues) => console.log("submit", vlues), []);
+  const onSubmit = useCallback((vlues) => addCar(vlues), [addCar]);
 
   return (
     <Formik
@@ -47,6 +50,7 @@ export const AddCarForm = (props: IProps) => {
         handleChange,
         values,
         setFieldValue,
+        isValid,
       }) => (
         <form onSubmit={handleSubmit} className={`${className} form`}>
           <div className="form__row">
@@ -69,6 +73,7 @@ export const AddCarForm = (props: IProps) => {
               isTouched={touched[FIELD_TYPE.YEAR]}
               error={errors[FIELD_TYPE.YEAR]}
               isValid={!errors[FIELD_TYPE.YEAR]}
+              type="number"
             />
             <CustomInput
               className="form__input"
@@ -79,6 +84,7 @@ export const AddCarForm = (props: IProps) => {
               isTouched={touched[FIELD_TYPE.PRICE]}
               error={errors[FIELD_TYPE.PRICE]}
               isValid={!errors[FIELD_TYPE.PRICE]}
+              type="number"
             />
           </div>
           <div className="form__row">
@@ -94,8 +100,23 @@ export const AddCarForm = (props: IProps) => {
             />
           </div>
           <div className="form__row">
+            <div className="form__color">
+              <span className="form__label">
+                {DICTIONARY[FIELD_TYPE.COLOR]}
+              </span>
+              {RADIO_COLORS.map((color: CAR_COLOR) => (
+                <CustomRadioInput
+                  className="form__radio"
+                  name={FIELD_TYPE.COLOR}
+                  key={color}
+                  value={color}
+                  onChange={handleChange}
+                  isChecked={color === values[FIELD_TYPE.COLOR]}
+                />
+              ))}
+            </div>
             <CustomSelect
-              className={"form__input"}
+              className={"form__select"}
               options={STATUS_OPTIONS}
               name={FIELD_TYPE.STATUS}
               label={DICTIONARY[FIELD_TYPE.STATUS]}
@@ -106,7 +127,11 @@ export const AddCarForm = (props: IProps) => {
               isValid={!errors[FIELD_TYPE.STATUS]}
             />
 
-            <button className="form__submit btn" type="submit">
+            <button
+              className="form__submit btn"
+              type="submit"
+              disabled={!isValid}
+            >
               {DICTIONARY.SUBMIT}
             </button>
           </div>

@@ -6,16 +6,17 @@ import "./style.scss";
 
 interface IProps {
   cars?: ICar[];
+  addCar: (car: ICar) => void;
 }
 
 export const HomePageView = (props: IProps) => {
-  const { cars = [] } = props;
+  const { cars = [], addCar = () => {} } = props;
 
   return (
     <main className="home">
       <div className="container">
         <h1 className="home__name title title--main">{DICTIONARY.CARAMBA}</h1>
-        <AddCarForm className="home__form" />
+        <AddCarForm className="home__form" addCar={addCar} />
         <h2 className="home__title title">{DICTIONARY.CARS_AVAILABLE}</h2>
         <section className="home__table table">
           <div className="table__header table__row">

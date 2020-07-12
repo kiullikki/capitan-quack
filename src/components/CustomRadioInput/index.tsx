@@ -11,25 +11,21 @@ interface IProps {
 
 export const CustomRadioInput = (props: IProps) => {
   const { className, name, onChange, isChecked, value } = props;
+  const customClass = `radio__custom radio__custom--${value}`;
   return (
     <div className={`${className} radio`}>
-      <div className={"radio__wrapper"}>
-        <div className={"radio__control"}>
-          <label htmlFor={name}>
-            <input
-              name={name}
-              className={"radio__input"}
-              type="radio"
-              id={name}
-              value={value}
-              onChange={onChange}
-              checked={isChecked}
-            />
-            <span className={"radio__custom"} />
-            <span className={"radio__label"} />
-          </label>
-        </div>
-      </div>
+      <label htmlFor={value} className={"radio__label"}>
+        <input
+          name={name}
+          className={"radio__input"}
+          type="radio"
+          id={value}
+          value={value}
+          onChange={onChange}
+          checked={isChecked}
+        />
+        <span className={customClass} />
+      </label>
     </div>
   );
 };

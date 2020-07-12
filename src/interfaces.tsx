@@ -1,5 +1,9 @@
-export enum COLOR_TYPE {
+export enum CAR_COLOR {
+  WHITE = "white",
+  BLACK = "black",
+  GRAY = "gray",
   RED = "red",
+  GREEN = "green",
 }
 
 export enum STATUS_CAR_TYPE {
@@ -13,7 +17,7 @@ export interface ICar {
   title: string;
   description: string;
   year: number;
-  color: COLOR_TYPE;
+  color: CAR_COLOR;
   status: STATUS_CAR_TYPE;
   price: number;
 }

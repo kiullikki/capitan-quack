@@ -14,8 +14,12 @@ export const appReducer = (
 ): IAppStore => {
   const { type } = action;
   switch (type) {
-    case ACTIONS_TYPES.INITIAL: {
-      return state;
+    case ACTIONS_TYPES.ADD_CAR: {
+      const { payload } = action;
+      return {
+        ...state,
+        cars: [...state.cars, payload],
+      };
     }
     default:
       return state;
