@@ -20,28 +20,31 @@ export const TableRow = (props: IProps) => {
     deleteCar = () => {},
   } = props;
 
-  const colorClasses = useMemo(
-    () => `table__color table__marker table__marker--${color}`,
-    [color]
-  );
+  const colorClasses = useMemo(() => `table__marker table__marker--${color}`, [
+    color,
+  ]);
   const deleteClickHandler = useCallback(() => deleteCar(id), [deleteCar, id]);
   return (
-    <li className="table__row table__item list__item">
-      <div className="table__name">
+    <tr className="table__row table__item list__item">
+      <td className="table__name">
         <p className="table__text">{title}</p>
         <p className="table__text table__text--light">{description}</p>
-      </div>
-      <p className="table__text table__year">{year}</p>
-      <span className={colorClasses} />
-      <p className="table__text table__status">{DICTIONARY[status]}</p>
-      <p className="table__text table__price">{price}</p>
-      <button
-        className="table__control btn btn--transparent"
-        type="button"
-        onClick={deleteClickHandler}
-      >
-        {DICTIONARY.DELETE}
-      </button>
-    </li>
+      </td>
+      <td className="table__text table__year">{year}</td>
+      <td className="table__color">
+        <div className={colorClasses} />
+      </td>
+      <td className="table__text table__status">{DICTIONARY[status]}</td>
+      <td className="table__text table__price">{`${price} ${DICTIONARY.RUB}`}</td>
+      <td className="table__control">
+        <button
+          className="table__btn btn btn--transparent btn--table"
+          type="button"
+          onClick={deleteClickHandler}
+        >
+          {DICTIONARY.DELETE}
+        </button>
+      </td>
+    </tr>
   );
 };

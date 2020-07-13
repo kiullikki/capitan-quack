@@ -1,10 +1,10 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import "./style.scss";
 
 interface IProps {
   className?: string;
   name: string;
-  onChange?: any;
+  onChange: (e: SyntheticEvent) => void;
   isChecked?: boolean;
   value: string;
 }
@@ -12,6 +12,7 @@ interface IProps {
 export const CustomRadioInput = (props: IProps) => {
   const { className, name, onChange, isChecked, value } = props;
   const customClass = `radio__custom radio__custom--${value}`;
+
   return (
     <div className={`${className} radio`}>
       <label htmlFor={value} className={"radio__label"}>

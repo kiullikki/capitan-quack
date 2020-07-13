@@ -12,7 +12,7 @@ export enum STATUS_CAR_TYPE {
   IN_STOCK = "in_stock",
 }
 
-export interface ICar {
+export type ICar = {
   id: number;
   title: string;
   description: string;
@@ -20,4 +20,4 @@ export interface ICar {
   color: CAR_COLOR;
   status: STATUS_CAR_TYPE;
   price: number;
-}
+};

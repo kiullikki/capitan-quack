@@ -1,8 +1,6 @@
 @import "../../styles/colors";
 
 .radio {
-  cursor: pointer;
-
   &__input {
     display: none;
   }
@@ -22,6 +20,8 @@
     max-height: 20px;
     background-color: $accentThird;
     border-radius: 100%;
+
+    cursor: pointer;
 
     &--white {
       min-width: 19px;

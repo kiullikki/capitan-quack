@@ -1,15 +1,24 @@
-import { all, put } from "redux-saga/effects";
+import { all, put, call, takeLatest } from "redux-saga/effects";
+import axios from "axios";
 import { SagaIterator } from "redux-saga";
-import { ACTIONS_TYPES } from "./actions";
+import {
+  ACTIONS_TYPES,
+  fetchCarsSuccessAction,
+  fetchCarsErrorAction,
+  fetchCarsStartAction,
+} from "./actions";
+import { API_BASE_URL } from "../constants";
 
-function* initialSaga(): SagaIterator {
+function* getCarsSaga(): SagaIterator {
   try {
-    yield put({ type: ACTIONS_TYPES.INITIAL });
-  } catch (error) {
-    console.log("error saga", error);
+    yield put(fetchCarsStartAction());
+    const { data } = yield call(axios.get, API_BASE_URL);
+    yield put(fetchCarsSuccessAction(data));
+  } catch {
+    yield put(fetchCarsErrorAction());
   }
 }
 
 export function* rootSaga(): Generator {
-  yield all([initialSaga()]);
+  yield all([takeLatest(ACTIONS_TYPES.FETCH_CARS, getCarsSaga)]);
 }

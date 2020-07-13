@@ -1,4 +1,4 @@
-import { IAddCarAction, IDeleteCarAction } from "./actions";
+import { actionCreators } from "./actions";
 import { ICar } from "../interfaces";
 
 export interface IAppStore {
@@ -11,4 +11,6 @@ export interface IStore {
   app: IAppStore;
 }
 
-export type TAppAction = IAddCarAction | IDeleteCarAction;
+type InferTypes<T> = T extends { [key: string]: infer U } ? U : never;
+
+export type TAppAction = ReturnType<InferTypes<typeof actionCreators>>;

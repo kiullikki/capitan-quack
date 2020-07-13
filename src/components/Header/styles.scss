@@ -1,0 +1,9 @@
+@import "../../styles/colors";
+
+.header {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: linear-gradient(to top, $auxiliaryPrimary 7%, $primary 7%);
+}
