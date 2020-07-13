@@ -3,14 +3,16 @@ import { DICTIONARY } from "./constants";
 import { AddCarForm } from "../../../components";
 import { ICar } from "../../../interfaces";
 import "./style.scss";
+import { TableRow } from "./tableRow";
 
 interface IProps {
   cars?: ICar[];
   addCar: (car: ICar) => void;
+  deleteCar: (id: number) => void;
 }
 
 export const HomePageView = (props: IProps) => {
-  const { cars = [], addCar = () => {} } = props;
+  const { cars = [], addCar = () => {}, deleteCar = () => {} } = props;
 
   return (
     <main className="home">
@@ -33,7 +35,11 @@ export const HomePageView = (props: IProps) => {
             </span>
             <span className="table__control" />
           </div>
-          {cars.map((car) => null)}
+          <ul className="table__list list">
+            {cars.map((car) => (
+              <TableRow car={car} deleteCar={deleteCar} key={`row-${car.id}`} />
+            ))}
+          </ul>
         </section>
       </div>
     </main>

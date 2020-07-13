@@ -18,7 +18,7 @@ import {
 const { SHOULD_BE_FILLED, SHOULD_BE_SELECTED } = ERRORS;
 
 const schema = Yup.object().shape({
-  [FIELD_TYPE.NAME]: Yup.string().required(SHOULD_BE_FILLED),
+  [FIELD_TYPE.TITLE]: Yup.string().required(SHOULD_BE_FILLED),
   [FIELD_TYPE.YEAR]: Yup.string().required(SHOULD_BE_FILLED),
   [FIELD_TYPE.DESCRIPTION]: Yup.string().required(SHOULD_BE_FILLED),
   [FIELD_TYPE.PRICE]: Yup.string().required(SHOULD_BE_FILLED),
@@ -57,12 +57,12 @@ export const AddCarForm = (props: IProps) => {
             <CustomInput
               className="form__input"
               onChange={handleChange}
-              name={FIELD_TYPE.NAME}
-              label={DICTIONARY[FIELD_TYPE.NAME]}
-              value={values[FIELD_TYPE.NAME]}
-              isTouched={touched[FIELD_TYPE.NAME]}
-              error={errors[FIELD_TYPE.NAME]}
-              isValid={!errors[FIELD_TYPE.NAME]}
+              name={FIELD_TYPE.TITLE}
+              label={DICTIONARY[FIELD_TYPE.TITLE]}
+              value={values[FIELD_TYPE.TITLE]}
+              isTouched={touched[FIELD_TYPE.TITLE]}
+              error={errors[FIELD_TYPE.TITLE]}
+              isValid={!errors[FIELD_TYPE.TITLE]}
             />
             <CustomInput
               className="form__input"

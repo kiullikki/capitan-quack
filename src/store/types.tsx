@@ -1,4 +1,4 @@
-import { IAddCarAction } from "./actions";
+import { IAddCarAction, IDeleteCarAction } from "./actions";
 import { ICar } from "../interfaces";
 
 export interface IAppStore {
@@ -11,4 +11,4 @@ export interface IStore {
   app: IAppStore;
 }
 
-export type TAppAction = IAddCarAction;
+export type TAppAction = IAddCarAction | IDeleteCarAction;

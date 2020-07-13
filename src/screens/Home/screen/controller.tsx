@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { HomePageView } from "./view";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCars } from "../../../store/selectors";
-import { addCarAction } from "../../../store";
+import { addCarAction, deleteCarAction } from "../../../store";
 import { ICar } from "../../../interfaces";
 
 export const HomePageController = () => {
@@ -12,5 +12,9 @@ export const HomePageController = () => {
     dispatch,
   ]);
 
-  return <HomePageView cars={cars} addCar={addCar} />;
+  const deleteCar = useCallback((id: number) => dispatch(deleteCarAction(id)), [
+    dispatch,
+  ]);
+
+  return <HomePageView cars={cars} addCar={addCar} deleteCar={deleteCar} />;
 };
