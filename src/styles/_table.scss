@@ -16,35 +16,85 @@
   }
 
   &__name {
-    flex-grow: 47;
+    width: 47%;
   }
 
   &__year {
-    flex-grow: 7;
+    width: 7%;
   }
 
   &__color {
-    flex-grow: 6;
+    width: 6%;
   }
 
   &__status {
-    flex-grow: 13;
+    width: 13%;
   }
 
   &__price {
-    flex-grow: 12;
+    width: 12%;
   }
 
   &__price {
-    flex-grow: 12;
+    width: 12%;
   }
 
   &__control {
-    flex-grow: 11;
+    width: 11%;
   }
 
   &__title {
     font-family: "Roboto-Medium";
     color: $auxiliaryPrimary;
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__item {
+    padding: 25px 15px;
+    border: 1px solid $auxiliaryThird;
+    border-top: none;
+    background-color: $auxiliarySecondary;
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $secondary;
+
+    &--light {
+      color: $third;
+    }
+  }
+
+  &__marker {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: $secondary;
+
+    &--white {
+      width: 19px;
+      height: 19px;
+      border-radius: 100%;
+      background-color: $primary;
+      border: 1px solid $auxiliaryThird;
+    }
+
+    &--black {
+      background-color: $primary;
+    }
+
+    &--red {
+      background-color: $accentPrimary;
+    }
+
+    &--black {
+      background-color: $accentSecondary;
+    }
   }
 }

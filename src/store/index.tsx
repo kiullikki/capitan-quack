@@ -1,3 +1,3 @@
 export { rootSaga } from "./sagas";
 export { rootReducer } from "./reducers";
-export { addCarAction } from "./actions";
+export { addCarAction, deleteCarAction } from "./actions";

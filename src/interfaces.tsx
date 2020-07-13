@@ -13,7 +13,7 @@ export enum STATUS_CAR_TYPE {
 }
 
 export interface ICar {
-  id: string;
+  id: number;
   title: string;
   description: string;
   year: number;

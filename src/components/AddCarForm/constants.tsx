@@ -2,7 +2,7 @@ import { ISelectOption } from "../CustomSelect";
 import { STATUS_CAR_TYPE, CAR_COLOR } from "../../interfaces";
 
 export enum FIELD_TYPE {
-  NAME = "name",
+  TITLE = "title",
   YEAR = "year",
   COLOR = "color",
   STATUS = "status",
@@ -11,7 +11,7 @@ export enum FIELD_TYPE {
 }
 
 export const DICTIONARY = {
-  [FIELD_TYPE.NAME]: "Название",
+  [FIELD_TYPE.TITLE]: "Название",
   [FIELD_TYPE.YEAR]: "Год",
   [FIELD_TYPE.COLOR]: "Цвет",
   [FIELD_TYPE.STATUS]: "Статус",
@@ -24,7 +24,7 @@ export const DICTIONARY = {
 };
 
 export const INITIAL_VALUES = {
-  [FIELD_TYPE.NAME]: "",
+  [FIELD_TYPE.TITLE]: "",
   [FIELD_TYPE.YEAR]: "",
   [FIELD_TYPE.COLOR]: CAR_COLOR.GRAY,
   [FIELD_TYPE.STATUS]: "",
