@@ -5,7 +5,7 @@ interface IProps {
   className: string;
 }
 
-export const Arrow = (props: any & IProps) => {
+export const Arrow = (props: IProps) => {
   const { rotate = 0, className } = props;
 
   return (
