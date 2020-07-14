@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import "./styles.scss";
 
 const DICTIONARY = {
@@ -7,8 +7,6 @@ const DICTIONARY = {
 };
 
 export const Footer = () => {
-  const imgUrl = useMemo(() => require("../../assets/images/logo.png"), []);
-
   return (
     <footer className="footer">
       <p className="footer__text">{DICTIONARY.copyrating}</p>

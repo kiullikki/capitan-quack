@@ -1,6 +1,8 @@
 import { ISelectOption } from "../CustomSelect";
 import { STATUS_CAR_TYPE, CAR_COLOR } from "../../interfaces";
 
+export const MIN_YEAR_CAR = "1970";
+
 export enum FIELD_TYPE {
   TITLE = "title",
   YEAR = "year",

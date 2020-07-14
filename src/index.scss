@@ -45,3 +45,24 @@ body {
 code {
   font-family: "Roboto-Regular";
 }
+
+body {
+  scrollbar-highlight-color: $third;
+  scrollbar-track-color: $auxiliaryPrimary;
+  scrollbar-arrow-color: $third;
+  scrollbar-shadow-color: $third;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $accentPrimary;
+}
