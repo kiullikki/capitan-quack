@@ -13,7 +13,9 @@ import {
   FIELD_TYPE,
   STATUS_OPTIONS,
   RADIO_COLORS,
+  MIN_YEAR_CAR,
 } from "./constants";
+import { createYearOptions } from "./utils";
 
 const { SHOULD_BE_FILLED, SHOULD_BE_SELECTED } = ERRORS;
 
@@ -64,16 +66,16 @@ export const AddCarForm = (props: IProps) => {
               error={errors[FIELD_TYPE.TITLE]}
               isValid={!errors[FIELD_TYPE.TITLE]}
             />
-            <CustomInput
-              className="form__input"
-              onChange={handleChange}
+            <CustomSelect
+              className="form__select"
+              options={createYearOptions(MIN_YEAR_CAR)}
               name={FIELD_TYPE.YEAR}
               label={DICTIONARY[FIELD_TYPE.YEAR]}
               value={values[FIELD_TYPE.YEAR]}
+              setFieldValue={setFieldValue}
               isTouched={touched[FIELD_TYPE.YEAR]}
               error={errors[FIELD_TYPE.YEAR]}
               isValid={!errors[FIELD_TYPE.YEAR]}
-              type="number"
             />
             <CustomInput
               className="form__input"
@@ -116,7 +118,7 @@ export const AddCarForm = (props: IProps) => {
               ))}
             </div>
             <CustomSelect
-              className={"form__select"}
+              className="form__select form__status"
               options={STATUS_OPTIONS}
               name={FIELD_TYPE.STATUS}
               label={DICTIONARY[FIELD_TYPE.STATUS]}

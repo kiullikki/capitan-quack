@@ -1,4 +1,10 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 import { OptionItem } from "./option";
 import { Arrow } from "../svg";
 import "./style.scss";
@@ -33,6 +39,8 @@ export const CustomSelect = (props: IProps) => {
     setFieldValue,
   } = props;
 
+  const selectRef = useRef<HTMLDivElement>(null);
+
   const [isOptionsOpen, setOptionsOpen] = useState(false);
 
   const isInvalid = useMemo(() => !isValid && isTouched, [isValid, isTouched]);
@@ -55,6 +63,8 @@ export const CustomSelect = (props: IProps) => {
     [isOptionsOpen]
   );
 
+  const rotateAngle = useMemo(() => (isOptionsOpen ? 180 : 0), [isOptionsOpen]);
+
   const toggleOptions = useCallback(() => setOptionsOpen(!isOptionsOpen), [
     setOptionsOpen,
     isOptionsOpen,
@@ -68,10 +78,30 @@ export const CustomSelect = (props: IProps) => {
     [setOptionsOpen, setFieldValue, name]
   );
 
-  const rotateAngle = useMemo(() => (isOptionsOpen ? 180 : 0), [isOptionsOpen]);
+  const outsideEvtListener = useCallback(
+    (e: any) => {
+      if (
+        e.target === selectRef.current ||
+        selectRef?.current?.contains(e!.target)
+      ) {
+        return;
+      }
+      setOptionsOpen(false);
+    },
+    [selectRef, setOptionsOpen]
+  );
+
+  const unsubscribeEvent = useCallback(() => {
+    document.removeEventListener("click", outsideEvtListener);
+  }, [outsideEvtListener]);
+
+  useEffect(() => {
+    document.addEventListener("click", outsideEvtListener);
+    return unsubscribeEvent;
+  }, [outsideEvtListener, unsubscribeEvent]);
 
   return (
-    <div className={`${className} select`}>
+    <div className={`${className} select`} ref={selectRef}>
       <button
         className={selectButtonClasses}
         type="button"

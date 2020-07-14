@@ -1,28 +1,37 @@
 import React, { SyntheticEvent, useMemo } from "react";
 
+export enum TYPE_TAG {
+  BUTTON = "BUTTON",
+  INPUT = "INPUT",
+}
+
 interface IProps {
   name: string;
   label: string;
-  className: string;
+  className?: string;
   value: string | number;
   isValid: boolean;
   type?: string;
-  onChange: (e: SyntheticEvent) => void;
+  onChange?: (e: SyntheticEvent) => void;
+  onClick?: (e: SyntheticEvent) => void;
   isTouched?: boolean;
   error?: string;
+  mode?: TYPE_TAG;
 }
 
 export const CustomInput = (props: IProps) => {
   const {
     label,
     name,
-    className,
+    className = "",
     type = "string",
-    onChange,
+    onChange = () => {},
     value,
     error,
     isValid,
     isTouched,
+    mode = TYPE_TAG.INPUT,
+    onClick = () => {},
   } = props;
 
   const isInvalid = useMemo(() => !isValid && isTouched, [isValid, isTouched]);
@@ -40,14 +49,27 @@ export const CustomInput = (props: IProps) => {
 
   return (
     <div className={`${className} input`}>
-      <input
-        id={`input-${name}`}
-        className={inputClasses}
-        type={type}
-        onChange={onChange}
-        name={name}
-        value={value}
-      />
+      {mode === TYPE_TAG.INPUT ? (
+        <input
+          id={`input-${name}`}
+          className={inputClasses}
+          type={type}
+          onChange={onChange}
+          name={name}
+          value={value}
+        />
+      ) : (
+        <button
+          id={`input-${name}`}
+          className={inputClasses}
+          type="button"
+          onChange={onChange}
+          name={name}
+          value={value}
+          onClick={onClick}
+        />
+      )}
+
       <label className={labelClasses} htmlFor={`input-${name}`}>
         {label}
       </label>

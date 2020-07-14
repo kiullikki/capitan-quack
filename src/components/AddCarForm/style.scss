@@ -18,10 +18,18 @@
     }
   }
 
+  &__select {
+    margin-right: 20px;
+  }
+
   &__submit,
   &__select,
   &__color {
     width: calc((100% - 40px) / 3);
+  }
+
+  &__status {
+    margin-right: 0;
   }
 
   &__radio-container {

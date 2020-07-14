@@ -1,8 +1,6 @@
 @import "../../styles/colors";
 
 .select {
-  min-height: 40px;
-
   &__btn {
     width: 100%;
     display: flex;
@@ -31,6 +29,10 @@
     left: 0;
     right: 0;
     z-index: 5;
+
+    max-height: 250px;
+    overflow-y: scroll;
+
     border: 1px solid $auxiliaryThird;
     border-top: none;
     background-color: $auxiliaryPrimary;
