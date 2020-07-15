@@ -1,35 +1,82 @@
 @import "../../styles/colors";
+@import "../../styles/variables";
 
 .form {
-  &__row {
-    display: flex;
-    margin-bottom: 45px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 30px;
+
+  @include media-sm {
+    grid-template-columns: 1fr 1fr;
   }
 
-  &__input {
-    flex-grow: 1;
-    margin-right: 20px;
-
-    &:last-child {
-      margin-right: 0;
+  &__name {
+    @include media-sm {
+      grid-column: 1/3;
+      grid-row: 1;
     }
   }
 
-  &__select {
-    margin-right: 20px;
+  &__description {
+    grid-column: 1/4;
+    grid-row: 2;
+
+    @include media-sm {
+      grid-column: 1/3;
+      grid-row: 3;
+    }
   }
 
-  &__submit,
-  &__select,
+  &__price {
+    @include media-sm {
+      grid-column: 1;
+      grid-row: 2;
+    }
+  }
+
+  &__year {
+    @include media-sm {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+
   &__color {
-    width: calc((100% - 40px) / 3);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 40px;
+
+    grid-column: 1;
+    grid-row: 3;
+
+    @include media-sm {
+      grid-column: 1/3;
+      grid-row: 4;
+    }
   }
 
   &__status {
-    margin-right: 0;
+    grid-column: 2;
+    grid-row: 3;
+
+    @include media-sm {
+      grid-column: 1;
+      grid-row: 5;
+    }
+  }
+
+  &__submit {
+    grid-column: 3;
+    grid-row: 3;
+
+    @include media-sm {
+      grid-column: 2;
+      grid-row: 5;
+    }
   }
 
   &__radio-container {
@@ -46,19 +93,26 @@
     }
   }
 
-  &__color {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    min-height: 40px;
-  }
-
   &__label {
     position: absolute;
     top: -20px;
     left: 10px;
     font-size: 0.8rem;
     color: $third;
+  }
+
+  &__btn-text {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      top: 4px;
+      right: -15px;
+      border-top: 2px solid $auxiliaryPrimary;
+      border-right: 2px solid $auxiliaryPrimary;
+      transform: rotate(45deg);
+    }
   }
 }

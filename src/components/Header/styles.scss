@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/variables";
 
 .header {
   padding-top: 5px;
@@ -6,4 +7,14 @@
   flex-direction: row;
   justify-content: center;
   background: linear-gradient(to top, $auxiliaryPrimary 7%, $primary 7%);
+
+  @include media-sm {
+    justify-content: flex-start;
+  }
+
+  &__logo {
+    @include media-sm {
+      max-width: 90%;
+    }
+  }
 }
