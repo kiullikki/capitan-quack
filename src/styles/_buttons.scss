@@ -51,5 +51,20 @@
       border-radius: 15px;
       background-color: $primary;
     }
+
+    @include media-sm {
+      color: $auxiliaryPrimary;
+      border-radius: 15px;
+      background-color: $primary;
+
+      &:hover,
+      &:focus {
+        filter: brightness(1.2);
+      }
+
+      &:active {
+        filter: brightness(0.8);
+      }
+    }
   }
 }

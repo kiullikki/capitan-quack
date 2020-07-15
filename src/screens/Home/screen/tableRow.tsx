@@ -25,18 +25,20 @@ export const TableRow = (props: IProps) => {
   ]);
   const deleteClickHandler = useCallback(() => deleteCar(id), [deleteCar, id]);
   return (
-    <tr className="table__row table__item list__item">
-      <td className="table__name">
+    <li className="table__row table__item list__item">
+      <div className="table__name">
         <p className="table__text">{title}</p>
+      </div>
+      <div className="table__description">
         <p className="table__text table__text--light">{description}</p>
-      </td>
-      <td className="table__text table__year">{year}</td>
-      <td className="table__color">
-        <div className={colorClasses} />
-      </td>
-      <td className="table__text table__status">{DICTIONARY[status]}</td>
-      <td className="table__text table__price">{`${price} ${DICTIONARY.RUB}`}</td>
-      <td className="table__control">
+      </div>
+      <div className="table__text table__year">{year}</div>
+      <div className="table__color">
+        <div className={colorClasses}></div>
+      </div>
+      <div className="table__text table__status">{DICTIONARY[status]}</div>
+      <div className="table__text table__price">{`${price} ${DICTIONARY.RUB}`}</div>
+      <div className="table__control">
         <button
           className="table__btn btn btn--transparent btn--table"
           type="button"
@@ -44,7 +46,7 @@ export const TableRow = (props: IProps) => {
         >
           {DICTIONARY.DELETE}
         </button>
-      </td>
-    </tr>
+      </div>
+    </li>
   );
 };
